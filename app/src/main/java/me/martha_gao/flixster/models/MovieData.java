@@ -2,23 +2,30 @@ package me.martha_gao.flixster.models;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
+@Parcel // makes class parcelable
 public class MovieData {
 
     // values from API
-    private String title;
-    private String overview;
-    private String posterPath; // TODO only the path
+    // fields must be public for parceler
+    String title;
+    String overview;
+    String posterPath;
 
-    private String backdropPath;
+    String backdropPath;
 
-    // initialize from JSON data
-    public MovieData(JSONObject object) throws JSONException {
-        title = object.getString("title");
-        overview = object.getString("overview");
-        posterPath = object.getString("poster_path");
+    Double voteAverage;
 
-        backdropPath = object.getString("backdrop_path");
+    // no-arg, empty constructor required for Parceler
+    public MovieData() {}
+
+    public MovieData(JSONObject movie) throws JSONException {
+        title = movie.getString("title");
+        overview = movie.getString("overview");
+        posterPath = movie.getString("poster_path");
+        backdropPath = movie.getString("backdrop_path");
+        voteAverage = movie.getDouble("vote_average");
     }
 
     public String getTitle() {
@@ -35,5 +42,9 @@ public class MovieData {
 
     public String getBackdropPath() {
         return backdropPath;
+    }
+
+    public Double getVoteAverage() {
+        return voteAverage;
     }
 }

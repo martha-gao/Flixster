@@ -1,8 +1,8 @@
 package me.martha_gao.flixster;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -73,7 +75,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             imageUrl = config.getImageUrl(config.getPosterSize(), movie.getPosterPath());
         } else {
             // load the backdrop image
-            imageUrl = config.getImageUrl(config.getBackdropSize(), movie.getBackdropPath());
+            imageUrl = config.getImageUrl( config.getBackdropSize(), movie.getBackdropPath());
         }
 
         // get the correct placeholder and imageview for the current orientation
@@ -100,24 +102,45 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return movies.size();
     }
 
-    // create the view-holder class as a nested static inner class
-    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        // track view objects
+    // class *cannot* be static
+    // create the view-holder class as a nested inner class
+    // implements View.OnClickListener
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         ImageView ivPosterImage;
         TextView tvTitle;
         TextView tvOverview;
 
         ImageView ivBackdropImage;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            // lookup view objects by id
+            // lookup view objects by ID
             ivPosterImage = itemView.findViewById(R.id.ivPosterImage);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
-
             ivBackdropImage = itemView.findViewById(R.id.ivBackdropImage);
+            // add this as the itemView's OnClickListener
+            itemView.setOnClickListener(this);
+        }
+
+        // when the user clicks on a row, show MovieDetailsActivity for the selected movie
+        @Override
+        public void onClick(View v) {
+            // gets item position
+            int position = getAdapterPosition();
+            // make sure the position is valid, i.e. actually exists in the view
+            if (position != RecyclerView.NO_POSITION) {
+                // get the movie at the position, this won't work if the class is static
+                MovieData movie = movies.get(position);
+                // create intent for the new activity
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                // serialize the movie using parceler, use its short name as a key
+                intent.putExtra(MovieData.class.getSimpleName(), Parcels.wrap(movie));
+                // show the activity
+                context.startActivity(intent);
+            }
         }
     }
 }
