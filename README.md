@@ -17,7 +17,11 @@ The following **optional** features are implemented:
   * [x] Title, Backdrop Image, Overview (Landscape mode)
 * [x] Display a nice default [placeholder graphic](https://guides.codepath.com/android/Displaying-Images-with-the-Glide-Library#advanced-usage) for each image during loading
 * [ ] Allow user to view details of the movie including ratings and popularity within a separate activity
-* [ ] Improved the user interface by experimenting with styling and coloring.
+* [x] Improved the user interface by experimenting with styling and coloring.
+  * [x] App title bar changed to red
+  * [x] Top bar (phone data, icons) changed to an unobtrusive black
+  * [x] List background changed to black - movie posters stand out more
+  * [x] Text (movie titles and overview) changed to white to be readable on the black background
 * [x] Apply rounded corners for the poster or background images using [Glide transformations](https://guides.codepath.com/android/Displaying-Images-with-the-Glide-Library#transformations)
 * [ ] Apply the popular [Butterknife annotation library](http://guides.codepath.com/android/Reducing-View-Boilerplate-with-Butterknife) to reduce boilerplate code.
 * [ ] Allow video trailers to be played in full-screen using the YouTubePlayerView from the details screen.
@@ -25,6 +29,7 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 * [x] Horizontal dividers that indicate the start and end of the information for the movie (visually separates movies)
+  * [x] Colour changed to dark grey to be unobtrusive but still able to be seen against the black background
 
 ## Video Walkthrough
 
