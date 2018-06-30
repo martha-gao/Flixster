@@ -42,8 +42,10 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app:
-Navigating the various classes and accurately referencing the information in each was difficult
+Navigating the various classes and accurately referencing the information in each was difficult.
 The newly introduced methods of implementation of the adapter and RecyclerView were challenging to understand and utilize.
+Integrating the movie ratings class using the Parceler was initially daunting, but ended up being similar to utilizing children classes, which was a good thing!
+A fun but hard to find feature was the code for the colours of the different parts of the app, and I think the Netflix colours are the most alluring for a movie app, so I emulated them.
 
 ## Open-source libraries used
 
