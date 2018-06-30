@@ -17,7 +17,7 @@ The following **optional** features are implemented:
   * [x] Title, Backdrop Image, Overview (Landscape mode)
 * [x] Display a nice default [placeholder graphic](https://guides.codepath.com/android/Displaying-Images-with-the-Glide-Library#advanced-usage) for each image during loading
 * [ ] Allow user to view details of the movie including ratings and popularity within a separate activity
-* [x] Improved the user interface by experimenting with styling and coloring.
+* [x] Improved the user interface by experimenting with styling and coloring. (kind of looks like Netflix TBH)
   * [x] App title bar changed to red
   * [x] Top bar (phone data, icons) changed to an unobtrusive black
   * [x] List background changed to black - movie posters stand out more
